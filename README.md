@@ -24,6 +24,9 @@ Easy to use IP Port Scanner &amp; Subnet calculator based on Batch-Script for Wi
 
 Maybe it works also on Linux / macOS / BSD etc. with an Emulator (Like Wine)/A Virtual Mashine (VMWare/Qemu/Virtual Box)
 
+# Adding Nextcloud Account to your Windows as Network Drive:
+Just add this file to: ```shell:startup``` -> ```Nextcloud_Startup_Drive.bat```
+
 # This script is beta! So please let me know if you have some issues
 
 # Legal Disclaimer:
