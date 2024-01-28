@@ -16,7 +16,31 @@ SETLOCAL EnableDelayedExpansion
 
 set "_HOST=host.domain.com"
 set "_USER=username"
-set "_PASS=pa$$word"
+REM set "_PASS=pa$$word"
+
+REM ----------------------------------------------
+REM !!! USE SIMPLE B64 ECODING IN SEPARATE DIR !!!
+REM ----------------------------------------------
+
+REM File path for the encrypted password file
+set PASSFILE=%APPDATA%\ncpw.key
+
+REM Check if the encrypted password file exists
+if not exist "!PASSFILE!" (
+    echo The encrypted password file does not exist.
+    pause
+    exit /b 1
+)
+
+REM Decrypt the password
+REM for /f %%A in ('certutil -decode "!PASSFILE!" -') do set "PASSWORD=%%A"
+
+REM Decrypt the password using certutil and store it in a temporary file
+certutil -decode "!PASSFILE!" "%TEMP%\decrypted_password.tmp" > nul
+set /p _PASS=<"%TEMP%\decrypted_password.tmp"
+del "%TEMP%\decrypted_password.tmp" > nul
+
+REM echo DEBUG: password is: !PASSWORD!
 
 :: #####################################
 :: #####################################
