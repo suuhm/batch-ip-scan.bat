@@ -1,5 +1,12 @@
 # batch-ip-scan.bat
-Easy to use IP Port Scanner &amp; Subnet calculator based on Batch-Script for Windows - No Install/ No Admin/Root needed to use!
+Easy to use IP Port Scanner &amp; Subnet calculator based on Batch-Script for Windows 
+
+- No Install
+- No Admin rights 
+- No Root needed
+- No Antivirus or EDR detection
+
+Just running a subnet scan with pure batch!
 
 ![Thumb](/files-src/screen01.PNG )
 
@@ -24,8 +31,16 @@ Easy to use IP Port Scanner &amp; Subnet calculator based on Batch-Script for Wi
 
 Maybe it works also on Linux / macOS / BSD etc. with an Emulator (Like Wine)/A Virtual Mashine (VMWare/Qemu/Virtual Box)
 
+<hr>
+
 # Adding Nextcloud Account to your Windows as Network Drive:
 Just add this file to: ```shell:startup``` -> ```Nextcloud_Startup_Drive.bat```
+
+#### Setup an encoded password with `setup_b64_password.bat`
+
+![grafik](https://github.com/suuhm/batch-ip-scan.bat/assets/11504990/abb30302-1c40-4f72-8205-f135bd0ae173)
+
+
 
 # This script is beta! So please let me know if you have some issues
 
