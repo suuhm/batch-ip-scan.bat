@@ -17,6 +17,8 @@ SETLOCAL EnableDelayedExpansion
 set "_HOST=host.domain.com"
 set "_USER=username"
 REM set "_PASS=pa$$word"
+REM set "_PASS=pa$$word"
+set "_DBG=FALSE"
 
 REM ----------------------------------------------
 REM !!! USE SIMPLE B64 ECODING IN SEPARATE DIR !!!
@@ -65,9 +67,14 @@ echo\
 ping -w 1000 -n 1 2.0.0.0 >nul	
 call :getCLStatus %_HOST% "2"
 
-echo [*] Setup NetDrive %_HOST% USER: %_USER% - PASS: !_PASS! ...
+if /I "%_DBG%"=="FALSE" (
+	set "_PASSOUT=******"
+) else (
+	set "_PASSOUT=!_PASS!"
+)
+echo [*] Setup NetDrive %_HOST% USER: %_USER% - PASS: %_PASSOUT% ...
 
-net use P: \\%_HOST%@SSL\remote.php\dav\files\%_USER% /persistent:yes /user:%_USER% !_PASS!
+net use P: \\%_HOST%@SSL\remote.php\dav\files\%_USER% /persistent:yes !_PASS! /user:%_USER%
 
 echo Done. bye.
 pause
@@ -166,6 +173,9 @@ pause
         )
         del /q "%tempFile%"
     )
+
+    :: cleanup and return errorlevel: 0=online , 1=offline 
+    endlocal & exit /b %exitCode%
 
     :: cleanup and return errorlevel: 0=online , 1=offline 
     endlocal & exit /b %exitCode%
